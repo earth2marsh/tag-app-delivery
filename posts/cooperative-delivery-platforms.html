@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Infrastructure for Apps: Platforms for Cooperative Delivery | CNCF TAG App Delivery</title>
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Infrastructure for Apps: Platforms for Cooperative Delivery" />
+<meta name="author" content="Josh Gavant" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://cncf.github.io/tag-app-delivery/posts/cooperative-delivery-platforms" />
+<meta property="og:url" content="https://cncf.github.io/tag-app-delivery/posts/cooperative-delivery-platforms" />
+<meta property="og:site_name" content="CNCF TAG App Delivery" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Infrastructure for Apps: Platforms for Cooperative Delivery" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Josh Gavant"},"dateModified":"2022-09-22T00:00:00+00:00","datePublished":"2022-09-22T00:00:00+00:00","headline":"Infrastructure for Apps: Platforms for Cooperative Delivery","mainEntityOfPage":{"@type":"WebPage","@id":"https://cncf.github.io/tag-app-delivery/posts/cooperative-delivery-platforms"},"url":"https://cncf.github.io/tag-app-delivery/posts/cooperative-delivery-platforms"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/tag-app-delivery/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://cncf.github.io/tag-app-delivery/feed.xml" title="CNCF TAG App Delivery" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/tag-app-delivery/">CNCF TAG App Delivery</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Infrastructure for Apps: Platforms for Cooperative Delivery</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-09-22T00:00:00+00:00" itemprop="datePublished">Sep 22, 2022
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Josh Gavant</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="/tag-app-delivery/assets/infrastructure-integration.png" alt="infrastructure integration" /></p>
+
+<p>TAG App Delivery formed the Cooperative Delivery working group in late 2021 to gather and report on emerging trends around coordinated delivery of infrastructure capabilities and applications. The TAG noted that while infrastructure teams are successfully adopting software development practices and deploying features and fixes continuously via the likes of GitOps and IaC (Infrastructure as Code), delivery of infrastructure capabilities is often not coordinated well with delivery of applications using that infrastructure. That is, there’s a <em>gap</em> in delivery between application and infrastructure and coordination/cooperation is needed to bridge that gap.</p>
+
+<p>The primary goals of the group have been to a) confirm the hypothesis that there is a gap, b) clarify how it manifests for end users and c) identify and encourage emerging trends to facilitate cooperation. For example, the group’s <a href="https://github.com/cncf/tag-app-delivery/blob/main/cooperative-delivery-wg/charter/README.md#examples-of-known-patterns-aimed-to-deploy-applications">first hypotheses</a> mentioned the following existing trends:</p>
+
+<ul>
+  <li>GitOps: continuous idempotent reconciliation of configuration from declarative descriptors</li>
+  <li>Operators: reconciliation-oriented services</li>
+  <li>Pipelines: imperative orchestration of services and applications</li>
+</ul>
+
+<p>In this article we’ll review new trends we’ve learned about from end users and from emerging <a href="https://landscape.cncf.io/card-mode?category=application-definition-image-build,continuous-integration-delivery&amp;grouping=no">CNCF projects</a> like Backstage, Crossplane, Dapr, KubeVela and more.</p>
+
+<p>We’ve also learned over the past year that while “cooperation” between infrastructure and application teams is what we seek to achieve, “cooperative delivery” is not a familiar term to most of our contributors. Recognizing that this cooperation is also the goal of “internal developer platforms” (IDPs) and the emerging platform engineering movement, we’re preparing to rename the working group Platforms.</p>
+
+<p>We’re always seeking more input from users and contributors to guide us. Please consider sharing how your organization coordinates application and infrastructure delivery via <a href="https://github.com/cncf/tag-app-delivery/issues/new/choose">this GitHub form</a> and share your thoughts in <a href="https://github.com/cncf/tag-app-delivery/discussions">GitHub</a> or <a href="https://cloud-native.slack.com/archives/CL3SL0CP5">Slack</a>.</p>
+
+<h2 id="platform-engineering">Platform Engineering</h2>
+
+<p>Beyond our original hypotheses, an emerging trend we’ve noted for coordinating infrastructure and applications is platform engineering (PE) and particularly its principle of <strong>self-serviceable capabilities</strong>. <a href="https://www.cncf.io/projects/backstage/">Backstage</a>, for example, is a popular portal framework for these emerging platforms. According to Humanitec lead <a href="https://platformengineering.org/authors/luca-galante">Luca Galante</a>, platform engineering is “the discipline of designing and building toolchains and workflows that enable <strong>self-service</strong> capabilities for software engineering organizations in the cloud-native era (<a href="https://platformengineering.org/blog/what-is-platform-engineering">link</a>).” <em>Self-service</em> describes the mechanism of cooperative delivery: a developer provisions and uses capabilities in their app on-demand by following documented steps.</p>
+
+<p>In addition to its self-service paradigm, platform engineering also <strong>focuses on the needs of application developers</strong> and operators, the users of the platform. This increases PEs’ empathy for developers and other platform users and helps them gather feedback and iteratively improve to meet their needs, as product developers do for end customers. The shift in focus also better aligns platform development with an enterprise’s true value streams, rather than infrastructure teams being an out-of-band cost center. It’s not technical exactly, but <strong>empathetic relationships between platform engineering and application teams</strong> lead to better coordination of infrastructure capabilities and app requirements.</p>
+
+<p>These platforms are typically built using foundational CNCF projects like Kubernetes, Helm, Prometheus, Backstage, Istio, Knative, Keptn and more.</p>
+
+<h2 id="kubernetes-for-everything">Kubernetes for Everything</h2>
+
+<p>Another trend we’ve noted in projects like <a href="https://www.cncf.io/projects/crossplane/">Crossplane</a> is the adoption of the Kubernetes resource model for configuring and managing all types of infrastructure capabilities and application components. Users no longer provision only deployments, volumes and ingresses via the Kubernetes API; custom resource definitions (CRDs) now enable provisioning of databases, identities, message brokers, observability systems, and much more.</p>
+
+<p>The <a href="https://www.cncf.io/projects/opengitops/">GitOps</a> movement demonstrated the value of continuous reconciliation for applications, and with so many resource types available developers can now reconcile infrastructure in the same way as applications. For those providing their own infrastructure capabilities, the <a href="https://www.cncf.io/projects/operator-framework/">Operator Framework</a> is a popular foundation for custom Kubernetes-based reconciler implementations.</p>
+
+<h2 id="capability-injection">Capability Injection</h2>
+
+<p>Finally, we’ve noted projects like <a href="https://www.cncf.io/projects/dapr/">Dapr</a> and <a href="https://www.cncf.io/projects/kubevela/">KubeVela</a> which seek to coordinate infrastructure capabilities for apps through inference and late resolution and injection of those capabilities. These projects often ask app developers to declare the capabilities they require, like databases and message brokers, and then resolve actual implementations at runtime, perhaps using sidecar containers or eBPF programs. Some projects like <a href="https://www.redhat.com/en/blog/istio-service-mesh-applies-become-cncf-project">Istio</a> can even inject capabilities transparently to the app developer.</p>
+
+<p>Late resolution and injection loosens coupling of apps and infrastructure and is another form of “cooperative” delivery. Imagine getting a database from a different provider depending on the application’s context - an RDS instance in AWS, a CloudSQL instance in GCP, or a <a href="https://cloudnative-pg.io/">CloudNativePG</a> instance on premises.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The mission of the Cooperative Delivery WG - soon to be the Platforms WG - is to gather feedback and highlight emerging trends that address gaps in coordination of infrastructure capabilities and applications. <a href="https://github.com/cncf/tag-app-delivery">Join us</a> in TAG App Delivery to advance this topic and others relevant to application and platform developers and operators.</p>
+
+<p><sup><sub>Image credit <a href="https://www.cleo.com/blog/knowledge-base-cloud-integration-platform">https://www.cleo.com/blog/knowledge-base-cloud-integration-platform</a><sup><sub></sub></sup></sub></sup></p>
+
+  </div><a class="u-url" href="/tag-app-delivery/posts/cooperative-delivery-platforms" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tag-app-delivery/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">CNCF TAG App Delivery</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">CNCF TAG App Delivery</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://www.twitter.com/CNCFTagApp"><svg class="svg-icon"><use xlink:href="/tag-app-delivery/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">CNCFTagApp</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

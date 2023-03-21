@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://cncf.github.io/tag-app-delivery/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cncf.github.io/tag-app-delivery/" rel="alternate" type="text/html" /><updated>2023-03-21T05:36:37+00:00</updated><id>https://cncf.github.io/tag-app-delivery/feed.xml</id><title type="html">CNCF TAG App Delivery</title><entry><title type="html">Infrastructure for Apps: Platforms for Cooperative Delivery</title><link href="https://cncf.github.io/tag-app-delivery/posts/cooperative-delivery-platforms" rel="alternate" type="text/html" title="Infrastructure for Apps: Platforms for Cooperative Delivery" /><published>2022-09-22T00:00:00+00:00</published><updated>2022-09-22T00:00:00+00:00</updated><id>https://cncf.github.io/tag-app-delivery/posts/cooperative-delivery-platforms</id><content type="html" xml:base="https://cncf.github.io/tag-app-delivery/posts/cooperative-delivery-platforms"><![CDATA[<p><img src="/tag-app-delivery/assets/infrastructure-integration.png" alt="infrastructure integration" /></p>
+
+<p>TAG App Delivery formed the Cooperative Delivery working group in late 2021 to gather and report on emerging trends around coordinated delivery of infrastructure capabilities and applications. The TAG noted that while infrastructure teams are successfully adopting software development practices and deploying features and fixes continuously via the likes of GitOps and IaC (Infrastructure as Code), delivery of infrastructure capabilities is often not coordinated well with delivery of applications using that infrastructure. That is, there’s a <em>gap</em> in delivery between application and infrastructure and coordination/cooperation is needed to bridge that gap.</p>
+
+<p>The primary goals of the group have been to a) confirm the hypothesis that there is a gap, b) clarify how it manifests for end users and c) identify and encourage emerging trends to facilitate cooperation. For example, the group’s <a href="https://github.com/cncf/tag-app-delivery/blob/main/cooperative-delivery-wg/charter/README.md#examples-of-known-patterns-aimed-to-deploy-applications">first hypotheses</a> mentioned the following existing trends:</p>
+
+<ul>
+  <li>GitOps: continuous idempotent reconciliation of configuration from declarative descriptors</li>
+  <li>Operators: reconciliation-oriented services</li>
+  <li>Pipelines: imperative orchestration of services and applications</li>
+</ul>
+
+<p>In this article we’ll review new trends we’ve learned about from end users and from emerging <a href="https://landscape.cncf.io/card-mode?category=application-definition-image-build,continuous-integration-delivery&amp;grouping=no">CNCF projects</a> like Backstage, Crossplane, Dapr, KubeVela and more.</p>
+
+<p>We’ve also learned over the past year that while “cooperation” between infrastructure and application teams is what we seek to achieve, “cooperative delivery” is not a familiar term to most of our contributors. Recognizing that this cooperation is also the goal of “internal developer platforms” (IDPs) and the emerging platform engineering movement, we’re preparing to rename the working group Platforms.</p>
+
+<p>We’re always seeking more input from users and contributors to guide us. Please consider sharing how your organization coordinates application and infrastructure delivery via <a href="https://github.com/cncf/tag-app-delivery/issues/new/choose">this GitHub form</a> and share your thoughts in <a href="https://github.com/cncf/tag-app-delivery/discussions">GitHub</a> or <a href="https://cloud-native.slack.com/archives/CL3SL0CP5">Slack</a>.</p>
+
+<h2 id="platform-engineering">Platform Engineering</h2>
+
+<p>Beyond our original hypotheses, an emerging trend we’ve noted for coordinating infrastructure and applications is platform engineering (PE) and particularly its principle of <strong>self-serviceable capabilities</strong>. <a href="https://www.cncf.io/projects/backstage/">Backstage</a>, for example, is a popular portal framework for these emerging platforms. According to Humanitec lead <a href="https://platformengineering.org/authors/luca-galante">Luca Galante</a>, platform engineering is “the discipline of designing and building toolchains and workflows that enable <strong>self-service</strong> capabilities for software engineering organizations in the cloud-native era (<a href="https://platformengineering.org/blog/what-is-platform-engineering">link</a>).” <em>Self-service</em> describes the mechanism of cooperative delivery: a developer provisions and uses capabilities in their app on-demand by following documented steps.</p>
+
+<p>In addition to its self-service paradigm, platform engineering also <strong>focuses on the needs of application developers</strong> and operators, the users of the platform. This increases PEs’ empathy for developers and other platform users and helps them gather feedback and iteratively improve to meet their needs, as product developers do for end customers. The shift in focus also better aligns platform development with an enterprise’s true value streams, rather than infrastructure teams being an out-of-band cost center. It’s not technical exactly, but <strong>empathetic relationships between platform engineering and application teams</strong> lead to better coordination of infrastructure capabilities and app requirements.</p>
+
+<p>These platforms are typically built using foundational CNCF projects like Kubernetes, Helm, Prometheus, Backstage, Istio, Knative, Keptn and more.</p>
+
+<h2 id="kubernetes-for-everything">Kubernetes for Everything</h2>
+
+<p>Another trend we’ve noted in projects like <a href="https://www.cncf.io/projects/crossplane/">Crossplane</a> is the adoption of the Kubernetes resource model for configuring and managing all types of infrastructure capabilities and application components. Users no longer provision only deployments, volumes and ingresses via the Kubernetes API; custom resource definitions (CRDs) now enable provisioning of databases, identities, message brokers, observability systems, and much more.</p>
+
+<p>The <a href="https://www.cncf.io/projects/opengitops/">GitOps</a> movement demonstrated the value of continuous reconciliation for applications, and with so many resource types available developers can now reconcile infrastructure in the same way as applications. For those providing their own infrastructure capabilities, the <a href="https://www.cncf.io/projects/operator-framework/">Operator Framework</a> is a popular foundation for custom Kubernetes-based reconciler implementations.</p>
+
+<h2 id="capability-injection">Capability Injection</h2>
+
+<p>Finally, we’ve noted projects like <a href="https://www.cncf.io/projects/dapr/">Dapr</a> and <a href="https://www.cncf.io/projects/kubevela/">KubeVela</a> which seek to coordinate infrastructure capabilities for apps through inference and late resolution and injection of those capabilities. These projects often ask app developers to declare the capabilities they require, like databases and message brokers, and then resolve actual implementations at runtime, perhaps using sidecar containers or eBPF programs. Some projects like <a href="https://www.redhat.com/en/blog/istio-service-mesh-applies-become-cncf-project">Istio</a> can even inject capabilities transparently to the app developer.</p>
+
+<p>Late resolution and injection loosens coupling of apps and infrastructure and is another form of “cooperative” delivery. Imagine getting a database from a different provider depending on the application’s context - an RDS instance in AWS, a CloudSQL instance in GCP, or a <a href="https://cloudnative-pg.io/">CloudNativePG</a> instance on premises.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The mission of the Cooperative Delivery WG - soon to be the Platforms WG - is to gather feedback and highlight emerging trends that address gaps in coordination of infrastructure capabilities and applications. <a href="https://github.com/cncf/tag-app-delivery">Join us</a> in TAG App Delivery to advance this topic and others relevant to application and platform developers and operators.</p>
+
+<p><sup><sub>Image credit <a href="https://www.cleo.com/blog/knowledge-base-cloud-integration-platform">https://www.cleo.com/blog/knowledge-base-cloud-integration-platform</a><sup><sub></sub></sup></sub></sup></p>]]></content><author><name>Josh Gavant</name></author><category term="platforms" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">TAG App Delivery at Kubecon NA 2022</title><link href="https://cncf.github.io/tag-app-delivery/posts/kubeconna-project-meeting" rel="alternate" type="text/html" title="TAG App Delivery at Kubecon NA 2022" /><published>2022-09-12T12:00:00+00:00</published><updated>2022-09-12T12:00:00+00:00</updated><id>https://cncf.github.io/tag-app-delivery/posts/kubeconna-project-meeting</id><content type="html" xml:base="https://cncf.github.io/tag-app-delivery/posts/kubeconna-project-meeting"><![CDATA[<h1 id="tag-app-delivery-at-kubecon-na-2022">TAG App Delivery at Kubecon NA 2022</h1>
+
+<p>Join CNCF TAG App Delivery and our working groups at Kubecon in Detroit October
+24-28.</p>
+
+<p>Many app delivery-related projects will be holding open office hours and
+maintaining booths in the project pavilion as detailed
+<a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/project-engagement/">here</a>.</p>
+
+<p>A general meeting on the state of the TAG and some emerging app delivery
+patterns will be held Tuesday, October 25 1-5pm at Huntington Place. Find it on
+sched.com
+<a href="https://kccncna2022.sched.com/event/1BaU0/cncf-tag-app-delivery-project-meeting">here</a>.</p>
+
+<p>The agenda for the TAG Meeting on Tuesday is
+<a href="https://docs.google.com/document/d/1aBLVTg2Ev27fIhFpXvsuL8WwqtK9AuMXgL6RpeozOTc/">here</a>.</p>
+
+<p>Finally, the Platforms WG will be gathering platform component providers in an “unmeetup”
+on Thursday 10/27 at 1:30pm, details in
+<a href="https://docs.google.com/document/d/1YNA1rYlZRZCGIj1VW6mL6a8HUXPHgQ2HaxunMOaoIVI/">this doc</a>.</p>
+
+<p>See you in Detroit!</p>]]></content><author><name>[&quot;Jennifer Strejevitch&quot;, &quot;Josh Gavant&quot;]</name></author><category term="events" /><summary type="html"><![CDATA[TAG App Delivery at Kubecon NA 2022]]></summary></entry><entry><title type="html">Clusters for all cloud tenants</title><link href="https://cncf.github.io/tag-app-delivery/posts/clusters-for-all-cloud-tenants" rel="alternate" type="text/html" title="Clusters for all cloud tenants" /><published>2022-06-02T11:04:00+00:00</published><updated>2022-06-02T11:04:00+00:00</updated><id>https://cncf.github.io/tag-app-delivery/posts/clusters-for-all-cloud-tenants</id><content type="html" xml:base="https://cncf.github.io/tag-app-delivery/posts/clusters-for-all-cloud-tenants"><![CDATA[<h1 id="clusters-for-all-cloud-tenants">Clusters for all cloud tenants</h1>
+
+<p>A decision which faces many large organizations as they adopt cloud architecture is how to provide isolated spaces within the same environments and clusters for various teams and purposes. For example, marketing and sales applications may need to be isolated from an organization’s customer-facing applications; and development teams building any app usually require extra spaces for tests and verification.</p>
+
+<h2 id="namespace-as-unit-of-tenancy">Namespace as unit of tenancy</h2>
+
+<p>To address this need, many organizations have started to use namespaces as units of isolation and tenancy, a pattern previously described by <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/multitenancy-overview">Google</a> and <a href="https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes/">Kubernetes contributors</a>. But namespace-scoped isolation is often insufficient because some concerns are managed at cluster scope. In particular, installing new resource types (CRDs) is a cluster-scoped activity; and today independent teams often want to install custom resource types and operators. Also, more developers are themselves writing software operators and custom resource types and find themselves requiring cluster-scoped access for research and tests.</p>
+
+<h2 id="cluster-as-unit-of-tenancy">Cluster as unit of tenancy</h2>
+
+<p>For these reasons and others, tenants often require their own isolated clusters with unconstrained access rights. In an isolated cluster, a tenant gets its own Kubernetes API server and persistence store and fully manages all namespaces and custom resource types in its cluster.</p>
+
+<p>But deploying physical or even virtual machines for many clusters is inefficient and difficult to manage, so organizations have struggled to provide clusters to tenant teams. Happily :smile:, to meet these organizations’ and users’ needs, leading Kubernetes vendors have been researching and developing lighter weight mechanisms to provide isolated clusters for an organization’s tenants. In this post we’ll compare and contrast several of these emergent efforts.</p>
+
+<p>Do you have other projects and ideas to enhance multitenancy for cloud architecture? Then please join CNCF’s App Delivery advisory group in discussing these <a href="https://github.com/cncf/tag-app-delivery/issues/193">here</a>; thank you!</p>
+
+<h3 id="vcluster">vcluster</h3>
+
+<p><a href="https://www.vcluster.com/">vcluster</a> is <a href="https://www.google.com/search?q=vcluster&amp;tbm=nws">a prominent project</a> and CLI tool maintained by <a href="https://loft.sh/">loft.sh</a> that provisions a virtual cluster as a StatefulSet within a tenant namespace. Access rights from the hosting namespace are propogated to the hosted virtual cluster such that the namespace tenant becomes the cluster’s only tenant. As cluster admins, tenant members can create cluster-scoped resources like CRDs and ClusterRoles.</p>
+
+<p>The virtual cluster runs its own Kubernetes API service and persistence store independent of those of the hosting cluster. It can be published by the hosting cluster as a LoadBalancer-type service and accessed directly with kubectl and other Kubernetes API-compliant tools. This enables users of the tenant cluster to work with it directly with little or no knowledge of its host.</p>
+
+<p>In vcluster and the following solutions, the virtual cluster is a “metadata-only” cluster, in that resources in it are persisted to a backing store like etcd, but no schedulers act to reify the persisted resources - ultimately as pods. Instead, a “syncer” synchronization service copies and transforms reifiable resources - podspecs - from the virtual cluster to the hosting namespace of the hosting cluster. Schedulers in the hosting cluster then detect and reify these resources in the same underlying tenant namespace where the virtual cluster’s control plane runs.</p>
+
+<p>An advantage of vcluster’s approach of scheduling pods in the hosting namespace is that the hosting cluster ultimately handles all workloads and applies namespace quotas - all work happens within the namespace allocated to the tenant by the hosting cluster administrator. A disadvantage is that schedulers cannot be configured in the virtual cluster since pods aren’t actually run there.</p>
+
+<ul>
+  <li><a href="https://github.com/loft-sh/vcluster">vcluster on GitHub</a></li>
+</ul>
+
+<h3 id="cluster-api-provider-nested-capn">Cluster API Provider Nested (CAPN)</h3>
+
+<p>In vcluster, bespoke support for control plane implementations is required; as of this writing, vcluster supports k3s, k0s and vanilla k8s distributions.</p>
+
+<p>To support <em>any</em> control plane implementation, the <a href="https://github.com/kubernetes-sigs/cluster-api-provider-nested">Cluster API Provider Nested</a> project implements an architecture similar to that of vcluster, including a metadata-only cluster and a syncer, but provisions the control plane using a Cluster API provider rather than a bespoke distribution.</p>
+
+<p>CAPN promises to enable control planes implementable via Cluster API to serve virtual clusters.</p>
+
+<h3 id="hypershift">HyperShift</h3>
+
+<p>Similar to the previous two, <a href="https://www.redhat.com/">Red Hat</a>’s <a href="https://github.com/openshift/hypershift">HyperShift</a> project provisions an OpenShift (Red Hat’s Kubernetes distro) control plane as a collection of pods in a host namespace. But rather than running workloads within the hosting cluster and namespace like vcluster, HyperShift control planes are connected to a pool of dedicated worker nodes where pods are synced and scheduled.</p>
+
+<p>HyperShift’s model may be most appropriate for a hosting provider like Red Hat which desires to abstract control plane management from their customers and allow them to just manage worker nodes.</p>
+
+<h3 id="kcp">kcp</h3>
+
+<p>Finally, <a href="https://github.com/kcp-dev/kcp">kcp</a> is another proposal and project from <a href="https://www.redhat.com/">Red Hat</a> inspired by and reimagined from all of the previous ideas. Whereas the above virtual clusters run <em>within</em> a host cluster and turn to the host cluster to run pods, manage networks and provision volumes, kcp reverses this paradigm and makes the <em>hosting</em> cluster a metadata-only cluster. <em>Child</em> clusters - <em>workspaces</em> in the kcp project - are registered with the hub metadata-only cluster and work is delegated to these children based on labels on resources in the hub.</p>
+
+<p>As opposed to hosted virtual clusters, child clusters in kcp <em>could</em> manage their own schedulers. Another advantage of kcp’s paradigm inversion is centralized awareness and management of child clusters. In particular, this enables simpler centralized policies and standards for custom resource types to be propogated to all children.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>vcluster, CAPN, HyperShift, and kcp are emerging projects and ideas to meet cloud users’ needs for multitenancy with <em>clusters</em> as the unit of tenancy. Early adopters are already providing feedback on good and better parts of these approaches and new ideas emerge daily.</p>
+
+<p>Want to help drive new ideas for cloud multitenancy? Want to help cloud users understand and give feedback on emerging paradigms in this domain? Then join <a href="https://github.com/cncf/tag-app-delivery/issues/193">the discussion</a> in CNCF’s TAG App Delivery. Thank you!</p>]]></content><author><name>Josh Gavant</name></author><category term="multi-tenancy" /><summary type="html"><![CDATA[Clusters for all cloud tenants]]></summary></entry></feed>
