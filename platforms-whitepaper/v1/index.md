@@ -140,7 +140,7 @@ _compositions_ of such services as self-serviceable templates for key scenarios
 like web application development or data analysis, aka MLOps.
 
 Use cases an enterprise could meet with platforms might progress through the
-following:
+following (NB: since this paper was published, a [maturity model](https://tag-app-delivery.cncf.io/whitepapers/platform-eng-maturity-model/) has been added):
 
 1. Product developers can provision capabilities on demand and immediately use
    them to run systems, such as compute, storage, databases or identities.
